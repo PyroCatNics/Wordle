@@ -32,6 +32,7 @@ def gatherAndDisplay(event):
         if chosen_word in word_list:
             times += 1
 
+            seperated_word = []
             for letter in range(len(word)):
                 seperated_word.append(word[letter])
 
@@ -69,7 +70,7 @@ def gatherAndDisplay(event):
                     win_text.configure(text = f"You won in {times+1} attempt!")
                 else:
                     win_text.configure(text = f"You won in {times+1} attempts!")
-                    
+
                 win_frame = Frame(winscreen, width = 25, bg = "#67ffbf")
                 win_frame.pack(padx = 40, pady = 10)
 
