@@ -32,59 +32,59 @@ def gatherAndDisplay(event):
 
         if chosen_word in word_list:
             times += 1
-            if times < 6:
-                seperated_word = []
-                for letter in range(len(word)):
-                    seperated_word.append(word[letter])
 
-                for letter in range(len(chosen_word)):
-                    if chosen_word[letter] == word[letter]:
+            seperated_word = []
+            for letter in range(len(word)):
+                seperated_word.append(word[letter])
+
+            for letter in range(len(chosen_word)):
+                if chosen_word[letter] == word[letter]:
                         seperated_word[letter] = ""
-                    else:
-                        pass
-
-                for letter in range(len(chosen_word)):
-                    if chosen_word[letter] == word[letter]:
-                        focus_letters = main_frame.grid_slaves(times,letter)
-                        focus_letter = focus_letters[0]
-                        focus_letter.configure(bg = "#53da4e", text = chosen_word[letter])
-                    elif chosen_word[letter] in seperated_word:
-                        focus_letters = main_frame.grid_slaves(times,letter)
-                        focus_letter = focus_letters[0]
-                        focus_letter.configure(bg = "#e7de55", text = chosen_word[letter])
-                        seperated_word_letter = seperated_word.index(chosen_word[letter])
-                        seperated_word[seperated_word_letter] = ""
-                    else:
-                        focus_letters = main_frame.grid_slaves(times,letter)
-                        focus_letter = focus_letters[0]
-                        focus_letter.configure(bg = "#b1b1b1", text = chosen_word[letter])
-
-                if chosen_word == word:
-                    winscreen = Tk()
-                    winscreen.title("You Win!")
-                    winscreen.configure(bg = "#acffdc")
-
-                    win_text = Label(winscreen, width = 25, font = (None,40), bg = "#94ffd2")
-                    win_text.pack(padx = 40, pady = 10)
-
-                    if times == 0:
-                        win_text.configure(text = f"You won in {times+1} attempt!")
-                    else:
-                        win_text.configure(text = f"You won in {times+1} attempts!")
-
-                    frame = Frame(winscreen, width = 25, bg = "#67ffbf")
-                    frame.pack(padx = 40, pady = 10)
-
-                    retry_game = Button(frame, width = 10, font = (None,30), text = "Retry game", bg = "#7dffc9", command = retryGame)
-                    retry_game.pack(side = LEFT)
-
-                    exit_game = Button(frame, width = 10, font = (None,30), text = "Exit game", bg = "#7dffc9", command = destroyGame)
-                    exit_game.pack(side = RIGHT)
-
-                    winscreen.mainloop()
                 else:
                     pass
+
+            for letter in range(len(chosen_word)):
+                if chosen_word[letter] == word[letter]:
+                    focus_letters = main_frame.grid_slaves(times,letter)
+                    focus_letter = focus_letters[0]
+                    focus_letter.configure(bg = "#53da4e", text = chosen_word[letter])
+                elif chosen_word[letter] in seperated_word:
+                    focus_letters = main_frame.grid_slaves(times,letter)
+                    focus_letter = focus_letters[0]
+                    focus_letter.configure(bg = "#e7de55", text = chosen_word[letter])
+                    seperated_word_letter = seperated_word.index(chosen_word[letter])
+                    seperated_word[seperated_word_letter] = ""
+                else:
+                    focus_letters = main_frame.grid_slaves(times,letter)
+                    focus_letter = focus_letters[0]
+                    focus_letter.configure(bg = "#b1b1b1", text = chosen_word[letter])
+
+            if chosen_word == word:
+                winscreen = Tk()
+                winscreen.title("You Win!")
+                winscreen.configure(bg = "#acffdc")
+
+                win_text = Label(winscreen, width = 25, font = (None,40), bg = "#94ffd2")
+                win_text.pack(padx = 40, pady = 10)
+
+                if times == 0:
+                    win_text.configure(text = f"You won in {times+1} attempt!")
+                else:
+                    win_text.configure(text = f"You won in {times+1} attempts!")
+
+                frame = Frame(winscreen, width = 25, bg = "#67ffbf")
+                frame.pack(padx = 40, pady = 10)
+
+                retry_game = Button(frame, width = 10, font = (None,30), text = "Retry game", bg = "#7dffc9", command = retryGame)
+                retry_game.pack(side = LEFT)
+
+                exit_game = Button(frame, width = 10, font = (None,30), text = "Exit game", bg = "#7dffc9", command = destroyGame)
+                exit_game.pack(side = RIGHT)
+
+                winscreen.mainloop()
             else:
+                pass
+            if times >= 5:
                 losescreen = Tk()
                 losescreen.title("You Lose.")
                 losescreen.configure(bg = "#acffdc")
@@ -100,6 +100,8 @@ def gatherAndDisplay(event):
 
                 exit_game = Button(frame, width = 10, font = (None,30), text = "Exit game", bg = "#7dffc9", command = destroyGame)
                 exit_game.pack(side = RIGHT)
+            else:
+                pass
         else:
             warning = Tk()
             warning.title("Invalid Word")
