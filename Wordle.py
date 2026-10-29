@@ -2,10 +2,19 @@ import random
 from tkinter import *
 
 def destroyGame():
-    try:
-        game.destroy()
+    try:    
         winscreen.destroy()
+    except:
+        pass
+    try:
         losescreen.destroy()
+    except:
+        pass
+    try:        
+        game.destroy()
+    except:
+        pass
+    try:
         warning.destroy()
     except:
         pass
@@ -82,9 +91,7 @@ def gatherAndDisplay(event):
                 exit_game.pack(side = RIGHT)
 
                 winscreen.mainloop()
-            else:
-                pass
-            if times >= 5:
+            elif times >= 5:
                 losescreen = Tk()
                 losescreen.title("You Lose.")
                 losescreen.configure(bg = "#acffdc")
