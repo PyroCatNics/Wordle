@@ -34,8 +34,6 @@ def gatherAndDisplay(event):
     if chosen_word.isspace():
         pass
     elif chosen_word == "":
-        pass
-    else:
 
         word_enter.delete(0, 'end')
 
@@ -49,8 +47,6 @@ def gatherAndDisplay(event):
             for letter in range(len(chosen_word)):
                 if chosen_word[letter] == word[letter]:
                         seperated_word[letter] = ""
-                else:
-                    pass
 
             for letter in range(len(chosen_word)):
                 if chosen_word[letter] == word[letter]:
@@ -107,8 +103,6 @@ def gatherAndDisplay(event):
 
                 exit_game = Button(frame, width = 10, font = (None,30), text = "Exit game", bg = "#7dffc9", command = destroyGame)
                 exit_game.pack(side = RIGHT)
-            else:
-                pass
         else:
             warning = Tk()
             warning.title("Invalid Word")
@@ -130,27 +124,29 @@ def playGame():
     game.title("Wordle")
     game.attributes('-fullscreen', True)
     game.configure(bg = "#ccffea")
+    width = game.winfo_screenwidth()
+    height = game.winfo_screenheight()
 
-    welcome = Label(game, width = 32, font = (None,100), text = "Welcome to wordle! Enter a word below:", bg = "#a2ffd8")
-    welcome.pack(padx = 40, pady = 10)
+    welcome = Label(game, width = 32, font = (None,int(round(width / 27, 0))), text = "Welcome to wordle! Enter a word below:", bg = "#a2ffd8")
+    welcome.pack(padx = 40, pady = int(round(height / 144, 0)))
 
     main_frame = Frame(game, width = 25, bg = "#67ffbf")
-    main_frame.pack(padx = 40, pady = 10)
+    main_frame.pack(padx = 40, pady = int(round(height / 144, 0)))
 
     for row in range(6):
         for column in range(5):
-            Label(main_frame, width = 2, font = (None,90), bg = "#A0A0A0", relief = "raised").grid(row = row,column = column)
+            Label(main_frame, width = 2, font = (None,int(round(width / 27.5, 0))), bg = "#A0A0A0", relief = "raised").grid(row = row,column = column)
 
-    word_enter = Entry(width = 10, font = (None,70), bg = "#a2ffd8")
-    word_enter.pack(padx = 40, pady = 10)
+    word_enter = Entry(width = 10, font = (None,int(round(width / 31.5, 0))), bg = "#a2ffd8")
+    word_enter.pack(padx = 40, pady = int(round(height / 144, 0)))
 
     low_frame = Frame(game, width = 25, bg = "#67ffbf")
-    low_frame.pack(padx = 40, pady = 10)
+    low_frame.pack(padx = 40, pady = int(round(height / 144, 0)))
 
-    retry_game = Button(low_frame, width = 12, font = (None,80), text = "Restart game", bg = "#a2ffd8", command = retryGame)
+    retry_game = Button(low_frame, width = 12, font = (None,int(round(width / 30, 0))), text = "Restart game", bg = "#a2ffd8", command = retryGame)
     retry_game.pack(side = LEFT)
 
-    exit_game = Button(low_frame, width = 10, font = (None,80), text = "Exit game", bg = "#a2ffd8", command = destroyGame)
+    exit_game = Button(low_frame, width = 10, font = (None,int(round(width / 30, 0))), text = "Exit game", bg = "#a2ffd8", command = destroyGame)
     exit_game.pack(side = RIGHT)
 
     game.bind('<Return>', gatherAndDisplay)
