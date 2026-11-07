@@ -34,7 +34,8 @@ def gatherAndDisplay(event):
     if chosen_word.isspace():
         pass
     elif chosen_word == "":
-
+        pass
+    else:
         word_enter.delete(0, 'end')
 
         if chosen_word in word_list:
@@ -143,10 +144,10 @@ def playGame():
     low_frame = Frame(game, width = 25, bg = "#67ffbf")
     low_frame.pack(padx = 40, pady = int(round(height / 144, 0)))
 
-    retry_game = Button(low_frame, width = 12, font = (None,int(round(width / 30, 0))), text = "Restart game", bg = "#a2ffd8", command = retryGame)
+    retry_game = Button(low_frame, width = 12, font = (None,int(round(width / 31.5, 0))), text = "Restart game", bg = "#a2ffd8", command = retryGame)
     retry_game.pack(side = LEFT)
 
-    exit_game = Button(low_frame, width = 10, font = (None,int(round(width / 30, 0))), text = "Exit game", bg = "#a2ffd8", command = destroyGame)
+    exit_game = Button(low_frame, width = 10, font = (None,int(round(width / 31.5, 0))), text = "Exit game", bg = "#a2ffd8", command = destroyGame)
     exit_game.pack(side = RIGHT)
 
     game.bind('<Return>', gatherAndDisplay)
